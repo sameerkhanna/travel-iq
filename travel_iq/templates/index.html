@@ -1,8 +1,9 @@
 <!doctype html>
-<html lang="en" ng-app="TravelIQ">
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<title>Travel-IQ</title>
+	<base href="/">
 
 	<link rel="stylesheet" href="/static/css/bootstrap.css">
 	<link rel="stylesheet" href="/static/css/main.css">
@@ -39,7 +40,8 @@
       </div>
     </nav>
 	<div class="container page">
-		<div id="content" class="container main" ng-view>
+		<div id="content" class="container main" ng-app="TravelIQ" ng-controller="searchCtrl">
+			<div ng-include src="'static/partials/search.html'"></div>
 		</div>
 
 		<hr>

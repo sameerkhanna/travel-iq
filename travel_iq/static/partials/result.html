@@ -1,0 +1,85 @@
+<section class="results">
+    <div ng-show="results.length">
+    	<hgroup class="mb20">
+			<h2>Search Results</h2>
+			<h3 class="lead"><strong class="text-danger">{{ results.length }}</strong> results were found in <strong class="text-danger">{{ searchTerm }}</strong></h3>								
+		</hgroup>
+		<section class="colcol-xs-12 col-sm-3 col-md-3">
+			<div ng-repeat="section_name, section_filters in filters">
+				<h4>{{ section_name }}</h4>
+				<div class="radio">
+				  <label>
+				    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+				    Loud
+				  </label>
+			</div>
+			</div>
+
+			<h4>Atmosphere</h4>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+			    Loud
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+			    Relaxed
+			  </label>
+			</div>
+			<div class="radio disabled">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+			    Friendly
+			  </label>
+			</div>
+
+			<h4>Environment</h4>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+			    Outdoor
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+			    Indoor
+			  </label>
+			</div>
+
+			<h4>Social</h4>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+			    Solo
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+			    Couple
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+			    Group
+			  </label>
+			</div>
+		</section>
+	    <section class="col-xs-12 col-sm-9 col-md-9">
+			<article class="search-result row">
+				<h4><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h4>
+				<div class="col-xs-12 col-sm-12 col-md-3 result-img">
+					<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-9 result-text">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
+				</div>
+				<span class="clearfix borda"></span>
+			</article>
+		</section>
+    </div>
+</section>

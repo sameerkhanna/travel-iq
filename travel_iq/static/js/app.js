@@ -1,18 +1,7 @@
 'use strict';
 
-angular.module('TravelIQ', ['travelIQServices', 'ngRoute'])
-	.config(['$routeProvider', '$locationProvider',
-		function($routeProvider, $locationProvider) {
-		$routeProvider
-		.when('/', {
-			templateUrl: 'static/partials/landing.html',
-			controller: IndexController
-		})
-		.otherwise({
-			redirectTo: '/'
-		})
-		;
-
-		//$locationProvider.html5Mode(true);
-	}])
-;
+window.TravelIQ = angular.module('TravelIQ', ['travelIQServices'],
+  ['$locationProvider', function($locationProvider) {
+    $locationProvider.html5Mode(true);
+  }]
+);
