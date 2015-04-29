@@ -41,6 +41,8 @@ class RequestHandler:
 			if data[0] == city:	
 				self.listOfDocId.setdefault(data[1], []).append(str(data[2]))
 
+		if listOfCategories[0] == "":
+			listOfCategories[0] = "relaxed"
 
 		for key,value in self.listOfDocId.iteritems():
 			#if len(listOfCategories) > 1:
@@ -74,7 +76,7 @@ class RequestHandler:
 		else:
 			for i in range (0, len(listOfOutputTemp)):
 				data = listOfOutputTemp[i]
-				for docId in finalList[0]:	
+				for docId in finalList[0]:
 					if docId == data[0]:
 						listOfVenueId[data[1]] = data[0]
 
@@ -104,27 +106,28 @@ class RequestHandler:
 		return self.listOfOutput
 
 
-def main():
+#def main():
+def getResults(self, location, inputList):
 	req = RequestHandler()
 	
-	inputList = sys.argv[1].split(',')
+	#inputList = sys.argv[1].split(',')
 
 	#print len(inputList)
 
-	location = inputList[0]
+	#location = inputList[0]
 	locationName = re.sub(' ', '+', location.rstrip())
 
 	#print locationName
 
 	req.locationConverter(locationName)
 
-	for i in range(1, len(inputList)):
+	for i in range(0, len(inputList)):
 		req.listOfCategories.append(inputList[i])
 
-	print req.listOfCategories
+	#print req.listOfCategories
 
 	req.getListOfVenues(req.shortName, req.listOfCategories)
-	print req.getDetailsForOutput(req.finalList)
+	return req.getDetailsForOutput(req.finalList)
 
 if __name__== '__main__':
 	main()
