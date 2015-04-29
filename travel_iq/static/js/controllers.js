@@ -20,6 +20,7 @@ TravelIQ.controller('searchCtrl', ['$scope', '$location', 'SearchAPI', function(
   	};
 
   	$scope.filterResults = function(filterOptions) {
+  		$scope.filterOptions = filterOptions;
   		_search($scope.searchTerm, $scope.filterOptions);
   	};
 
