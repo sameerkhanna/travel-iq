@@ -1,16 +1,12 @@
 'use strict';
 
 angular.module('travelIQServices', ['ngResource'])
-	.factory('Post', function($resource) {
-		return $resource('/api/post/:postId', {}, {
+	.factory('SearchAPI', function($resource) {
+		return $resource('/search', {}, {
 			query: {
-				method: 'GET',
-				params: { postId: '' },
+				method: 'POST',
 				isArray: true
 			}
 		});
 	})
 ;
-
-
-
