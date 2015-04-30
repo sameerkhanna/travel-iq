@@ -81,7 +81,7 @@ class RequestHandler:
 		if len(finalList) > 0:
 			for i in range (0, len(listOfOutputTemp)):
 				data = listOfOutputTemp[i]
-				for docId in finalList[0]:
+				for docId in finalList:
 					if docId == data[0]:
 						listOfVenueId[data[1]] = data[0]
 
