@@ -43,11 +43,13 @@ class RequestHandler:
 				self.listOfDocId.setdefault(data[1], []).append(str(data[2]))
 
 		if not listOfCategories or listOfCategories[0] == "":
-			listOfCategories.append("relaxed")
+			for key,value in self.listOfDocId.iteritems():
+				self.finalList.append(value)
+				listTemp.append(value)
 
 		for key,value in self.listOfDocId.iteritems():
 			#if len(listOfCategories) > 1:
-			if key == listOfCategories[0]:
+			if listOfCategories and key == listOfCategories[0]:
 				listTemp.append(value)
 						
 		for key,value in self.listOfDocId.iteritems():

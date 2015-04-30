@@ -10,7 +10,7 @@ TravelIQ.controller('searchCtrl', ['$scope', '$location', 'SearchAPI', function(
 		"environment": ["outdoor", "indoor"],
 		"social": ["solo", "couple", "group"]
 	};
-	$scope.filterOptions = {};
+	$scope.filterOptions = null;
 
 	$scope.search = function(searchTerm) {
 		$scope.searchTerm = searchTerm;
@@ -21,6 +21,16 @@ TravelIQ.controller('searchCtrl', ['$scope', '$location', 'SearchAPI', function(
 
   	$scope.filterResults = function(filterOptions) {
   		$scope.filterOptions = filterOptions;
+  		_search($scope.searchTerm, $scope.filterOptions);
+  	};
+
+  	$scope.reset = function() {
+  		var radioButtons = angular.element(document.querySelectorAll('input[type="radio"]'));
+  		for (var i = 0; i < radioButtons.length; i++) {
+  			radioButtons[i].checked = false;
+  		}
+
+  		$scope.filterOptions = null;
   		_search($scope.searchTerm, $scope.filterOptions);
   	};
 
