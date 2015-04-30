@@ -13,20 +13,17 @@ class IndexBuilder:
 		self.indexWithCity = {}
 
 	def openTempIndex(self):
-		f = open('docIdCategory_3.txt', 'r')
+		f = open('docIdCategory_4.txt', 'r')
 		data = f.readlines()
 		for line in data:
 				line = line.rstrip('\n')
 				self.listOfCategoryId.append(line.split('~'))
-
-		#print len(self.listOfCategoryId)
 
 		for i in range (0, len(self.listOfCategoryId)):
 			data = self.listOfCategoryId[i]
 			self.listOfVenueId[data[1]] = str(data[2])	
 			self.listOfCity.setdefault(data[0], []).append(str(data[1]))
 
-		#print self.listOfCity
 
 	def buildListFilter(self):
 		self.listOfFilterCategory.append('loud')
@@ -87,20 +84,12 @@ class IndexBuilder:
 			listOfCityTemp.append(value)
 			for i in value:
 				if docId == i:
-					#listOfCategoryTemp.setdefault(category, []).append(docId)
-					#self.indexWithCity.setdefault(key, {}).update(listOfCategoryTemp)
-					#self.indexWithCity.setdefault(key, {}).update(listOfCategoryTemp.setdefault(category, []).append(docId))
 					self.writeToFile(key, category, docId)
 		
-		print self.indexStructure
-		#print listOfCategoryTemp
 
 	def writeToFile(self, city, category, docId):
-		f= open("FinalIndexStructure_1.txt", "ab")
+		f= open("FinalIndexStructure_2.txt", "ab")
 		f.write(str(city) + '~' + str(category) +'~'+ str(docId) +'\n')
-		#for key, value in indexStructure.iteritems():
-		#	f.write(str(key) +'~'+str(value)+'\n')
-
 
 	def mapToKeywords(self):
 		for keyVenue, valueVenue in self.listOfVenueId.iteritems():
@@ -122,14 +111,12 @@ class IndexBuilder:
 						if count > 0:
 							break
 
-			#print self.indexStructure
 
 def main():
 	index = IndexBuilder()
 	index.openTempIndex()
 	index.buildListFilter()
 	index.mapToKeywords()
-	#print index.indexWithCity
 	index.writeToFile(index.indexStructure)
 
 
