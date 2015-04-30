@@ -75,7 +75,6 @@ class ApiParser:
 					venue = result['response']['venues']
 
 					for i in range(0, len(venue)):
-					#self.listOfVenueId.append(str(venue[i]['id']))
 						self.listOfVenueId.setdefault('NY', []).append(str(venue[i]['id']))
 				except urllib2.HTTPError:
 					print 'There was an error with the request'
@@ -93,7 +92,6 @@ class ApiParser:
 					venue = result['response']['venues']
 
 					for i in range(0, len(venue)):
-					#self.listOfVenueId.append(str(venue[i]['id']))
 						self.listOfVenueId.setdefault('SF', []).append(str(venue[i]['id']))
 				except urllib2.HTTPError:
 					print 'There was an error with the request'
@@ -111,25 +109,21 @@ class ApiParser:
 					venue = result['response']['venues']
 
 					for i in range(0, len(venue)):
-					#self.listOfVenueId.append(str(venue[i]['id']))
 						self.listOfVenueId.setdefault('Boston', []).append(str(venue[i]['id']))
 				except urllib2.HTTPError:
 					print 'There was an error with the request'
 				except urllib2.URLError:
 					print 'There was an error with the request'
 
-		#print self.listOfVenueId
 
 	def getVenueDetail(self, listOfVenueId):
 		count = 0
 
-		#for i in range (0, len(listOfVenueId)):
 		for key in self.listOfVenueId:
 			for value in self.listOfVenueId[key]:
 				j=urllib2.urlopen('https://api.foursquare.com/v2/venues/'+str(value)+'?client_id=Y4SSCFTDL4QXOHSJEU0JSJT0ACWVWWPQCO0ZGMYRWHY0UVMQ&client_secret=P4DGMCRS3QCLWNEVXFWZTP2BWJ5XRBVHNE1PLUGRSI4NXNA0&v=20131011')
 				result = json.load(j)
 				venue = result['response']['venue']
-				#photos = venue['tips']['groups']
 				photos = venue['photos']
 				photoURL = photos.get('groups')
 
