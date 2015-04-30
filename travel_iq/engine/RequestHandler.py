@@ -45,10 +45,7 @@ class RequestHandler:
 
 		if not listOfCategories or listOfCategories[0] == "":
 			for key,value in self.listOfDocId.iteritems():
-				#self.finalList.append(value)
 				listTemp.extend(value)
-
-		#print listTemp
 
 		for key,value in self.listOfDocId.iteritems():
 			if len(listOfCategories) > 1:
@@ -58,13 +55,10 @@ class RequestHandler:
 				if listOfCategories and listOfCategories[0] != "" and key == listOfCategories[0]:
 					listTemp.extend(value)
 		
-		#print listTemp
-
 		for key,value in self.listOfDocId.iteritems():
 			if len(listOfCategories) > 1:
 				for i in range(1, len(listOfCategories)):
 					if key == listOfCategories[i]:
-						#self.finalList.append(set(value)&set(listTemp[0]))
 						valueTemp.append(set(value)&set(listTemp[0]))
 
 			else:
@@ -72,7 +66,6 @@ class RequestHandler:
 				
 		if len(listOfCategories) > 1 and valueTemp:
 			self.finalList.extend(valueTemp[0])
-		#print self.finalList
 
 	def getDetailsForOutput(self, finalList):
 		listOfOutputTemp = []
@@ -92,8 +85,6 @@ class RequestHandler:
 				for docId in finalList:
 					if docId == data[0]:
 						listOfVenueId[data[1]] = data[0]
-
-		#print listOfVenueId
 
 		for key in listOfVenueId.iterkeys():
 			for i in range (0, len(listOfOutputTemp)):
@@ -119,25 +110,14 @@ class RequestHandler:
 		return self.listOfOutput
 
 
-#def main():
 def getResults(location, inputList):
 	req = RequestHandler()
-	
-	#inputList = sys.argv[1].split(',')
-
-	#print len(inputList)
-
-	#location = inputList[0]
 	locationName = re.sub(' ', '+', location.rstrip())
-
-	#print locationName
 
 	req.locationConverter(locationName)
 
 	for i in range(0, len(inputList)):
 		req.listOfCategories.append(inputList[i])
-
-	#print req.listOfCategories
 
 	req.getListOfVenues(req.shortName, req.listOfCategories)
 	return req.getDetailsForOutput(req.finalList)
