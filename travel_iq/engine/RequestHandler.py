@@ -70,7 +70,7 @@ class RequestHandler:
 			else:
 				self.finalList.extend(listTemp)
 				
-		if len(listOfCategories) > 1:
+		if len(listOfCategories) > 1 and valueTemp:
 			self.finalList.extend(valueTemp[0])
 		#print self.finalList
 
