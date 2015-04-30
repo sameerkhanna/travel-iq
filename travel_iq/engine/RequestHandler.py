@@ -32,7 +32,7 @@ class RequestHandler:
 		listTemp = []
 		valueTemp = []
 
-		f = open(self.indexDirectory + '/FinalIndexStructure_1.txt', 'r')
+		f = open(self.indexDirectory + '/FinalIndexStructure_2.txt', 'r')
 		data = f.readlines()
 		for line in data:
 				line = line.rstrip('\n')
@@ -80,7 +80,7 @@ class RequestHandler:
 		listOfOutputInt = {}
 		data = []
 
-		f = open(self.indexDirectory + '/tempIndex_3.txt', 'r')
+		f = open(self.indexDirectory + '/tempIndex_4.txt', 'r')
 		data = f.readlines()
 		for line in data:
 				line = line.rstrip('\n')
