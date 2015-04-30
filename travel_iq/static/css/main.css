@@ -53,6 +53,10 @@ hgroup h3.lead {
 	padding-bottom: 10px; 
 }
 
+.filters > div {
+	margin-bottom: 30px;
+}
+
 .search-result .result-img { 
 	padding-left: 0;
 }

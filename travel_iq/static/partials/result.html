@@ -4,7 +4,7 @@
 			<h2>Search Results</h2>
 			<h3 class="lead"><strong class="text-danger"><strong ng-show="loaded">{{ results.length }}</strong><i ng-show="!loaded" class="fa fa-circle-o-notch fa-spin"></i></strong> results were found in <strong class="text-danger">{{ searchTerm }}</strong></h3>								
 		</hgroup>
-		<section class="colcol-xs-12 col-sm-3 col-md-3">
+		<section class="colcol-xs-12 col-sm-3 col-md-3 filters">
 			<p ng-show="filterOptions"><a ng-click="reset();" style="cursor:pointer;">Reset Filters</a></p>
 			<div ng-repeat="(sectionName, sectionValues) in filters">
 				<h4>{{ sectionName | capitalize }}</h4>
