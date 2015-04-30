@@ -2,7 +2,7 @@
     <div ng-show="searchTerm">
     	<hgroup class="mb20">
 			<h2>Search Results</h2>
-			<h3 class="lead"><strong class="text-danger">{{ results.length }}</strong> results were found in <strong class="text-danger">{{ searchTerm }}</strong></h3>								
+			<h3 class="lead"><strong class="text-danger"><strong ng-show="loaded">{{ results.length }}</strong><i ng-show="!loaded" class="fa fa-circle-o-notch fa-spin"></i></strong> results were found in <strong class="text-danger">{{ searchTerm }}</strong></h3>								
 		</hgroup>
 		<section class="colcol-xs-12 col-sm-3 col-md-3">
 			<p ng-show="filterOptions"><a ng-click="reset();" style="cursor:pointer;">Reset Filters</a></p>
@@ -20,16 +20,19 @@
 		</section>
 	    <section class="col-xs-12 col-sm-9 col-md-9">
 	    	<p ng-show="!results.length">No Results Found</p>
-			<article ng-repeat="row in results" class="search-result row">
-				<h4><a href="{{ row.venueURL }}" title="">{{ row.venueName }}</a></h4>
-				<div class="col-xs-12 col-sm-12 col-md-3 result-img">
-					<a href="{{ row.venueURL }}" title="{{ row.venueName }}" class="thumbnail"><img ng-init="image = row.venueImage && row.venueImage != 'None' ? row.venueImage : '/static/img/none.png'" src="{{ image }}" alt="{{ row.venueName }} Image" /></a>
-				</div>
-				<div class="col-xs-12 col-sm-12 col-md-9 result-text">
-					<p>{{ row.venueDesc }}</p>						
-				</div>
-				<span class="clearfix borda"></span>
-			</article>
+	    	<div ng-show="!loaded">Loading <i class="fa fa-circle-o-notch fa-spin"></i></div>
+	    	<div ng-show="loaded">
+				<article ng-repeat="row in results" class="search-result row">
+					<h4><a href="{{ row.venueURL }}" title="">{{ row.venueName }}</a></h4>
+					<div class="col-xs-12 col-sm-12 col-md-3 result-img">
+						<a href="{{ row.venueURL }}" title="{{ row.venueName }}" class="thumbnail"><img ng-init="image = row.venueImage && row.venueImage != 'None' ? row.venueImage : '/static/img/none.png'" src="{{ image }}" alt="{{ row.venueName }} Image" /></a>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-9 result-text">
+						<p>{{ row.venueDesc }}</p>						
+					</div>
+					<span class="clearfix borda"></span>
+				</article>
+			</div>
 		</section>
     </div>
 </section>

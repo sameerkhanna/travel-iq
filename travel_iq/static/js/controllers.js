@@ -11,6 +11,7 @@ TravelIQ.controller('searchCtrl', ['$scope', '$location', 'SearchAPI', function(
 		"social": ["solo", "couple", "group"]
 	};
 	$scope.filterOptions = null;
+	$scope.loaded = true;
 
 	$scope.search = function(searchTerm) {
 		$scope.searchTerm = searchTerm;
@@ -35,10 +36,12 @@ TravelIQ.controller('searchCtrl', ['$scope', '$location', 'SearchAPI', function(
   	};
 
   	function _search(q, filters) {
+  		$scope.loaded = false;
   		SearchAPI.save({q: q, filters: filters}, function(res) {
   			if (res.result) {
   				$scope.results = res.result;
   			}
+  			$scope.loaded = true;
 		});
 	}
 }]);
