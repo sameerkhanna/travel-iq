@@ -2,6 +2,7 @@ import json
 import urllib2
 import sys
 import re
+import os
 
 class RequestHandler:
 
@@ -12,7 +13,7 @@ class RequestHandler:
 		self.listOfCategories = []
 		self.listOfDocId = {}
 		self.finalList = []
-
+		self.indexDirectory = os.path.dirname(os.path.realpath(__file__)) + '/index'
 
 	def locationConverter(self, location):
 		j=urllib2.urlopen('http://maps.googleapis.com/maps/api/geocode/json?address='+location+'&sensor=true')
@@ -30,7 +31,7 @@ class RequestHandler:
 		listOfDocIdTemp = []
 		listTemp = []
 
-		f = open('FinalIndexStructure_1.txt', 'r')
+		f = open(self.indexDirectory + '/FinalIndexStructure_1.txt', 'r')
 		data = f.readlines()
 		for line in data:
 				line = line.rstrip('\n')
@@ -41,8 +42,8 @@ class RequestHandler:
 			if data[0] == city:	
 				self.listOfDocId.setdefault(data[1], []).append(str(data[2]))
 
-		if listOfCategories[0] == "":
-			listOfCategories[0] = "relaxed"
+		if not listOfCategories or listOfCategories[0] == "":
+			listOfCategories.append("relaxed")
 
 		for key,value in self.listOfDocId.iteritems():
 			#if len(listOfCategories) > 1:
@@ -65,15 +66,13 @@ class RequestHandler:
 		listOfOutputInt = {}
 		data = []
 
-		f = open('tempIndex_3.txt', 'r')
+		f = open(self.indexDirectory + '/tempIndex_3.txt', 'r')
 		data = f.readlines()
 		for line in data:
 				line = line.rstrip('\n')
 				listOfOutputTemp.append(line.split('~'))
 
-		if len(finalList) < 1:
-			self.listOfOutput.append('No Results')
-		else:
+		if len(finalList) > 0:
 			for i in range (0, len(listOfOutputTemp)):
 				data = listOfOutputTemp[i]
 				for docId in finalList[0]:
@@ -107,7 +106,7 @@ class RequestHandler:
 
 
 #def main():
-def getResults(self, location, inputList):
+def getResults(location, inputList):
 	req = RequestHandler()
 	
 	#inputList = sys.argv[1].split(',')
