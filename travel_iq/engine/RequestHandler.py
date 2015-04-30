@@ -30,6 +30,7 @@ class RequestHandler:
 	def getListOfVenues(self, city, listOfCategories):
 		listOfDocIdTemp = []
 		listTemp = []
+		valueTemp = []
 
 		f = open(self.indexDirectory + '/FinalIndexStructure_1.txt', 'r')
 		data = f.readlines()
@@ -50,9 +51,12 @@ class RequestHandler:
 		#print listTemp
 
 		for key,value in self.listOfDocId.iteritems():
-			#if len(listOfCategories) > 1:
-			if listOfCategories and listOfCategories[0] != "" and key == listOfCategories[0]:
-				listTemp.extend(value)
+			if len(listOfCategories) > 1:
+				if listOfCategories and listOfCategories[0] != "" and key == listOfCategories[0]:
+					listTemp.append(value)
+			else:
+				if listOfCategories and listOfCategories[0] != "" and key == listOfCategories[0]:
+					listTemp.extend(value)
 		
 		#print listTemp
 
@@ -60,10 +64,14 @@ class RequestHandler:
 			if len(listOfCategories) > 1:
 				for i in range(1, len(listOfCategories)):
 					if key == listOfCategories[i]:
-						self.finalList.append(set(value)&set(listTemp[0]))
+						#self.finalList.append(set(value)&set(listTemp[0]))
+						valueTemp.append(set(value)&set(listTemp[0]))
+
 			else:
 				self.finalList.extend(listTemp)
-
+				
+		if len(listOfCategories) > 1:
+			self.finalList.extend(valueTemp[0])
 		#print self.finalList
 
 	def getDetailsForOutput(self, finalList):
