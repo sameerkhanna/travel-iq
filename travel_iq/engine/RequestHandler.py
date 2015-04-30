@@ -44,21 +44,25 @@ class RequestHandler:
 
 		if not listOfCategories or listOfCategories[0] == "":
 			for key,value in self.listOfDocId.iteritems():
-				self.finalList.append(value)
-				listTemp.append(value)
+				#self.finalList.append(value)
+				listTemp.extend(value)
+
+		#print listTemp
 
 		for key,value in self.listOfDocId.iteritems():
 			#if len(listOfCategories) > 1:
-			if listOfCategories and key == listOfCategories[0]:
-				listTemp.append(value)
-						
+			if listOfCategories and listOfCategories[0] != "" and key == listOfCategories[0]:
+				listTemp.extend(value)
+		
+		#print listTemp
+
 		for key,value in self.listOfDocId.iteritems():
 			if len(listOfCategories) > 1:
 				for i in range(1, len(listOfCategories)):
 					if key == listOfCategories[i]:
 						self.finalList.append(set(value)&set(listTemp[0]))
 			else:
-				self.finalList.append(listTemp[0])
+				self.finalList.extend(listTemp)
 
 		#print self.finalList
 
