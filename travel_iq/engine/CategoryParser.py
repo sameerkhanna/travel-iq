@@ -121,7 +121,7 @@ class ApiParser:
 		#print self.listOfVenueId
 
 	def getVenueDetail(self, listOfVenueId):
-		count = 2977
+		count = 0
 
 		#for i in range (0, len(listOfVenueId)):
 		for key in self.listOfVenueId:
@@ -129,10 +129,16 @@ class ApiParser:
 				j=urllib2.urlopen('https://api.foursquare.com/v2/venues/'+str(value)+'?client_id=Y4SSCFTDL4QXOHSJEU0JSJT0ACWVWWPQCO0ZGMYRWHY0UVMQ&client_secret=P4DGMCRS3QCLWNEVXFWZTP2BWJ5XRBVHNE1PLUGRSI4NXNA0&v=20131011')
 				result = json.load(j)
 				venue = result['response']['venue']
-				photos = venue['tips']['groups']
+				#photos = venue['tips']['groups']
+				photos = venue['photos']
+				photoURL = photos.get('groups')
 
-				photoURL = photos[0].get('items')
-
+				try:
+					if photoURL[0] != None:
+						photoURL2 = photoURL[0].get('items')
+				except IndexError:
+					e = 'error'
+					
 				try: 
 					if venue['rating'] != None:
 						if venue['ratingSignals'] > 200:
@@ -145,7 +151,7 @@ class ApiParser:
 							
 							try:
 								if photoURL != None:
-									self.listOfVenue.append(str(photoURL[0].get('photourl')))
+									self.listOfVenue.append(str(photoURL2[0].get('prefix')) + '200x125' + str(photoURL2[0].get('suffix')))
 							except KeyError:
 								self.listOfVenue.append('No photo URL available')
 								print 'no photo'
