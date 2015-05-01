@@ -37,3 +37,4 @@ Backend component has three classes, the completion of index structure will be a
   c. This class will return the results in dictionary and the frontend will display the results.
   d. This class will be invoked when the local server is initiated (see instructions of Set up Flask framework and run server in How To Get Started section) and when any action is initiated from the front end. 
 
+
