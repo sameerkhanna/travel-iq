@@ -11,7 +11,7 @@
 > python travel_iq/engine/CategoryParser.py
 
 4. build index
-> python travel_iq/engine/CategoryParser.py
+> python travel_iq/engine/IndexBuilder.py
 
 5. run the app
 > python runserver.py
