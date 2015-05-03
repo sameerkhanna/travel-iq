@@ -43,7 +43,7 @@ Backend component has three classes, the completion of index structure will be a
   * This class is responsible for taking the parameters from the front end (location and list of categories based on users’ selections).
   * This class will then go to final index structure file to parse the category and the document ID and will get the venue’s detailed information based on the matching document ID. 
   * This class will return the results in dictionary and the frontend will display the results.
-  * This class will be invoked when the local server is initiated (see instructions of Set up Flask framework and run server in How To Get Started section) and when any action is initiated from the front end. 
+  * This class will be invoked when the local server is initiated (see instructions of Set up Flask framework and run server in Instructions section) and when any action is initiated from the front end. 
 
 
 ### Frontend:
