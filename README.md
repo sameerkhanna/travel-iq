@@ -1,6 +1,7 @@
 # Travel-IQ
+##### CS6913 Devika and Sameer
 
-### How to Get Started
+## Instructions:
 
 1. clone this repo
 
@@ -20,10 +21,11 @@
 > http://localhost:5000
 
 
-Project component specifications:
+## Project component specifications:
 
 The project is created in two parts: backend and frontend. Backend component is built in Python and the main purpose of it is to crawl the API for gathering data, build the index structure and determine the categories as well as ranks of the venues. 
 
+### Backend:
 Backend component has three classes, the completion of index structure will be achieved if these three classes are run in their order:
 
 1. CategoryParser.py
@@ -42,5 +44,8 @@ Backend component has three classes, the completion of index structure will be a
   * This class will then go to final index structure file to parse the category and the document ID and will get the venue’s detailed information based on the matching document ID. 
   * This class will return the results in dictionary and the frontend will display the results.
   * This class will be invoked when the local server is initiated (see instructions of Set up Flask framework and run server in How To Get Started section) and when any action is initiated from the front end. 
+
+
+### Frontend:
 
 
