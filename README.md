@@ -59,3 +59,7 @@ Frontend is composed of two parts; angular for handling the user input/interface
 2. Flask
   * We decided to pick flask, as it is an easy way to provide a basic endpoint for angular to communicate with our backend. Most of the flask code is contained in _controllers.py_ which has a function called _search_ which is our endpoint for angular. This function only accepts POST HTTP actions and takes in json data. This includes the query and filter options. We then pass this directly to our backend class (_RequestHandler.py_), which we have imported. We then return the data back to angular using JSON with appropriate HTTP status.
   * We also use angular's template engine to serve our _index.html_ which is the layout for our application. This single page includes the angular application, which allows angular to run.
+
+3. Screenshots
+![Search Box](https://www.dropbox.com/s/s850njerqi7r2w1/Screenshot%202015-05-04%2013.46.35.png?dl=1)
+![Search Results](https://www.dropbox.com/s/pxtcrebajy53w3p/Screenshot%202015-05-04%2013.46.54.png?dl=1)
